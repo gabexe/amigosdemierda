@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+
+html {
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Schoolbell', cursive;
+    background-color: #000000;
+    color: #a9a9a9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: change-bg 0.3s infinite, tilt 10s infinite alternate;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes tilt {
+    from {
+        transform: scale(1.1) rotate(-2deg);
+    }
+    to {
+        transform: scale(1.1) rotate(2deg);
+    }
+}
+
+@keyframes change-bg {
+    0%, 100% {
+        background-image: url("../img/1.webp");
+    }
+    33% {
+        background-image: url("../img/2.webp");
+    }
+    66% {
+        background-image: url("../img/3.webp");
+    }
+}
+
+#card-container {
+    width: 18rem;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+#card-inner {
+    background-color: #0a0a0a;
+}
+
+.initial-card-animation {
+    animation: initial-card-images 0.5s infinite steps(1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes initial-card-images {
+    0% { background-image: url("../img/1.png"); }
+    20% { background-image: url("../img/2.png"); }
+    40% { background-image: url("../img/3.png"); }
+    60% { background-image: url("../img/4.png"); }
+    80% { background-image: url("../img/5.png"); }
+    100% { background-image: url("../img/1.png"); }
+}
+
+.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+#question-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+#dice-button {
+    background-color: transparent;
+    border: 2px solid #a9a9a9;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+
+/* Animación de giro */
+@keyframes roll {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.dice-icon.is-rolling {
+    animation: roll 1s ease-in-out;
+    display: inline-block;
+}
+
+@media (max-width: 640px) {
+    #card-container {
+        width: 300px;
+    }
+}
